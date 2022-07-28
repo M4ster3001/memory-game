@@ -1,17 +1,24 @@
-import { Button, styled } from '@mui/material'
+import { Button, ButtonProps, styled } from '@mui/material'
 import { ReactNode } from 'react'
+import { Link, LinkProps } from 'react-router-dom'
 
-type DashboardButtonProps = {
-  children: ReactNode
-}
+type DashboardButtonProps = ButtonProps &
+  LinkProps & {
+    children: ReactNode
+  }
 
-const DButton = styled(Button)({
-  blockSize: 'large'
-})
+const DButton = styled(Button)({})
 
-const DashboardButton = ({ children }: DashboardButtonProps) => {
+const DashboardButton = ({ children, ...rest }: DashboardButtonProps) => {
   return (
-    <DButton variant="outlined" color="primary" fullWidth>
+    <DButton
+      LinkComponent={Link}
+      variant="outlined"
+      color="primary"
+      size="large"
+      fullWidth
+      {...rest}
+    >
       {children}
     </DButton>
   )

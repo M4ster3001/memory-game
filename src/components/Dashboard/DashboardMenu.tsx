@@ -11,13 +11,14 @@ const DPaper = styled(Paper)(({ theme }) => ({
 }))
 
 const DTypography = styled(Typography)(({ theme }) => ({
-  padding: theme.spacing(6)
+  paddingBottom: theme.spacing(6),
+  alignItems: 'center'
 }))
 
 const DashboardMenu = ({ children, title }: DashboardMenuProps) => {
   return (
     <DPaper>
-      <DTypography>{title}</DTypography>
+      <DTypography variant="h4">{title}</DTypography>
 
       {children}
     </DPaper>

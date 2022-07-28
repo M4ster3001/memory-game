@@ -6,6 +6,7 @@ type DashboardProps = {
 }
 
 const GridRoot = styled(Grid)({
+  height: '100vh',
   backgroundColor: '#fafafa',
   alignItems: 'center',
   justifyContent: 'center'

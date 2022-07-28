@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <Dashboard>
       <DashboardMenu title="Jogo da Memória">
-        <DashboardButton>Iniciar Jogo</DashboardButton>
+        <DashboardButton to="/game">Iniciar Jogo</DashboardButton>
       </DashboardMenu>
     </Dashboard>
   )
