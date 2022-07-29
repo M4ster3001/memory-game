@@ -4,6 +4,7 @@ import { useCallback } from 'react'
 type CustomCardProps = CardProps & {
   name: string
   isActive?: boolean
+  onClick: () => void
 }
 
 const width = '160px'
@@ -40,7 +41,7 @@ const CCard = styled(Card)<{ isActive?: boolean }>(({ isActive }) => {
   return { backgroundColor: 'silver', transform: 'rotateY(0deg)', zIndex: 2 }
 }).withComponent(CPage)
 
-const CustomCard = ({ name, isActive = false, ...rest }: CustomCardProps) => {
+const CustomCard = ({ name, isActive = false, onClick }: CustomCardProps) => {
   const CCardContent = useCallback(({ isActive = false }) => {
     if (isActive) {
       return (
@@ -56,8 +57,8 @@ const CustomCard = ({ name, isActive = false, ...rest }: CustomCardProps) => {
   }, [])
 
   return (
-    <CContainer>
-      <CFlipper defaultChecked={isActive} {...rest}>
+    <CContainer role={'presentation'} onClick={onClick}>
+      <CFlipper defaultChecked={isActive}>
         <CCardContent />
         <CCardContent isActive />
       </CFlipper>

@@ -1,10 +1,14 @@
-import { useState } from 'react'
 import { Board, Card } from '../../components'
+import { useAppDispatch, useAppSelector } from '../../hooks'
+import { SELECT_CARD } from '../../reducers/game'
+import { RootState } from '../../store'
 
 const GamePage = () => {
-  const [isActive, setIsActive] = useState(false)
+  const dispatch = useAppDispatch()
+  const isActive = useAppSelector((state: RootState) => state.game.isActive)
+
   function handleCardClick() {
-    setIsActive(!isActive)
+    dispatch(SELECT_CARD())
   }
 
   return (
