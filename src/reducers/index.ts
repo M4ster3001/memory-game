@@ -1,3 +1,3 @@
-import { gameReducer } from './game'
+import { gameReducer, actions, selectCards } from './game'
 
-export { gameReducer }
+export { gameReducer, actions, selectCards }

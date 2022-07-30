@@ -1,19 +1,27 @@
 import { Board, Card } from '../../components'
+import { Card as TCard } from '../../dtos'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { SELECT_CARD } from '../../reducers/game'
-import { RootState } from '../../store'
+import { selectCards } from '../../reducers/game'
 
 const GamePage = () => {
   const dispatch = useAppDispatch()
-  const isActive = useAppSelector((state: RootState) => state.game.isActive)
+  const cards = useAppSelector(selectCards)
 
-  function handleCardClick() {
-    dispatch(SELECT_CARD())
+  function handleCardClick(card: TCard) {
+    dispatch({ type: 'SELECT_CARD', key: card.key })
   }
 
   return (
     <Board>
-      <Card name="Back" onClick={handleCardClick} isActive={isActive} />
+      {cards &&
+        cards.map(card => (
+          <Card
+            key={card.key}
+            name={card.name}
+            onClick={() => handleCardClick(card)}
+            isActive={card.isActive}
+          />
+        ))}
     </Board>
   )
 }
