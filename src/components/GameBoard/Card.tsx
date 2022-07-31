@@ -1,4 +1,11 @@
-import { Card, CardContent, CardProps, styled, Typography } from '@mui/material'
+import {
+  Card,
+  CardContent,
+  CardProps,
+  Grid,
+  styled,
+  Typography
+} from '@mui/material'
 import { useCallback } from 'react'
 
 type CustomCardProps = CardProps & {
@@ -19,7 +26,7 @@ const CPage = styled('div')({
   backfaceVisibility: 'hidden'
 })
 
-const CContainer = styled('div')({
+const CContainer = styled(Grid)({
   width,
   height,
   margin: '12px',
@@ -57,7 +64,7 @@ const CustomCard = ({ name, isActive = false, onClick }: CustomCardProps) => {
   }, [])
 
   return (
-    <CContainer role={'presentation'} onClick={onClick}>
+    <CContainer item role={'presentation'} onClick={onClick}>
       <CFlipper defaultChecked={isActive}>
         <CCardContent />
         <CCardContent isActive />

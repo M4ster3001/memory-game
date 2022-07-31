@@ -1,18 +1,12 @@
 import { createSlice, current } from '@reduxjs/toolkit'
+import { ListBuilder } from '../builders'
 import { RootState } from '../store'
+
+const listBuilder = new ListBuilder([])
 
 const initialState = {
   isLocked: false,
-  cards: [
-    { id: 1, key: 1, name: 'Card 1', isActive: false, hasMatch: false },
-    { id: 2, key: 2, name: 'Card 2', isActive: false, hasMatch: false },
-    { id: 3, key: 3, name: 'Card 3', isActive: false, hasMatch: false },
-    { id: 4, key: 4, name: 'Card 4', isActive: false, hasMatch: false },
-    { id: 1, key: 5, name: 'Card 1', isActive: false, hasMatch: false },
-    { id: 2, key: 6, name: 'Card 2', isActive: false, hasMatch: false },
-    { id: 3, key: 7, name: 'Card 3', isActive: false, hasMatch: false },
-    { id: 4, key: 8, name: 'Card 4', isActive: false, hasMatch: false }
-  ]
+  cards: listBuilder.createList(3).build()
 }
 
 const gameSlice = createSlice({

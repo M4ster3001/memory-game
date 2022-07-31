@@ -8,7 +8,11 @@ type BoardProps = {
 const BGrid = styled(Grid)({})
 
 const Board = ({ children }: BoardProps) => {
-  return <BGrid>{children}</BGrid>
+  return (
+    <BGrid container spacing={'2'}>
+      {children}
+    </BGrid>
+  )
 }
 
 export default Board

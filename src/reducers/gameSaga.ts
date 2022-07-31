@@ -5,7 +5,7 @@ import { gameActions } from './gameSlice'
 
 type SelectCardProps = {
   type: string
-  key: number
+  key: string
 }
 
 function* selectCard({ type, key }: SelectCardProps) {

@@ -1,6 +1,6 @@
 type Card = {
   id: number
-  key: number
+  key: string
   name: string
   isActive: boolean
   hasMatch: boolean
