@@ -6,6 +6,7 @@ const listBuilder = new ListBuilder([])
 
 const initialState = {
   isLocked: false,
+  isVictoryDialogOpen: false,
   cards: listBuilder.createList(3).shuffle().build()
 }
 
@@ -13,6 +14,13 @@ const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
+    START_GAME(state, action) {
+      return {
+        ...state,
+        isVictoryDialogOpen: false,
+        cards: listBuilder.resetList().createList(3).shuffle().build()
+      }
+    },
     LOCK(state, action) {
       return {
         ...state,
@@ -31,6 +39,7 @@ const gameSlice = createSlice({
     },
     SET_MATCH(state, action) {
       const cards = current(state).cards.slice()
+      let isVictoryDialogOpen = false
 
       cards[action.payload.index1] = {
         ...cards[action.payload.index1],
@@ -41,8 +50,13 @@ const gameSlice = createSlice({
         hasMatch: true
       }
 
+      if (cards.every(c => c.hasMatch)) {
+        isVictoryDialogOpen = true
+      }
+
       return {
         ...state,
+        isVictoryDialogOpen,
         cards
       }
     },
@@ -62,6 +76,12 @@ const gameSlice = createSlice({
         ...state,
         isLocked: false,
         cards
+      }
+    },
+    CLOSE_VICTORY_DIALOG(state, action) {
+      return {
+        ...state,
+        isVictoryDialogOpen: false
       }
     }
   }

@@ -1,5 +1,7 @@
 import { Card } from '../dtos'
 
+const PREFIXES = ['ts', 'ls', 'az', 'ou', 'lw']
+
 class ListBuilder {
   private list
 
@@ -7,21 +9,28 @@ class ListBuilder {
     this.list = list || []
   }
 
+  resetList() {
+    this.list = []
+    return this
+  }
+
   createList(total: number) {
-    const createListLoop = (keyPreffix: string) => {
-      for (let i = 1; i <= total; i++) {
-        this.list.push({
-          id: i,
-          key: `${keyPreffix}-${i}`,
-          name: `Carta ${i}`,
-          isActive: false,
-          hasMatch: false
-        })
+    const createListLoop = () => {
+      for (let d = 0; d < 2; d++) {
+        const keyPreffix = PREFIXES[Math.floor(Math.random() * PREFIXES.length)]
+        for (let i = 1; i <= total; i++) {
+          this.list.push({
+            id: i,
+            key: `${keyPreffix}-${i}`,
+            name: `Carta ${i}`,
+            isActive: false,
+            hasMatch: false
+          })
+        }
       }
     }
 
-    createListLoop('1')
-    createListLoop('2')
+    createListLoop()
 
     return this
   }
