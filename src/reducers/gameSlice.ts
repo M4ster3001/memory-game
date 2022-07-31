@@ -6,7 +6,7 @@ const listBuilder = new ListBuilder([])
 
 const initialState = {
   isLocked: false,
-  cards: listBuilder.createList(3).build()
+  cards: listBuilder.createList(3).shuffle().build()
 }
 
 const gameSlice = createSlice({
