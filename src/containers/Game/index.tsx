@@ -1,7 +1,7 @@
 import { Board, Card } from '../../components'
 import { Card as TCard } from '../../dtos'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { selectCards } from '../../reducers/game'
+import { selectCards } from '../../reducers'
 
 const GamePage = () => {
   const dispatch = useAppDispatch()
